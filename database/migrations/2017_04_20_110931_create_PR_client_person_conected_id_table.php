@@ -16,7 +16,7 @@ class CreatePRClientPersonConectedIdTable extends Migration {
 		{
 			$table->integer('count', true);
 			$table->string('id', 36)->unique('id_UNIQUE');
-			$table->timestamp('crated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->softDeletes();
 			$table->string('cllients_id', 36)->index('fk_PR_client_person_conected_id_PR_clients_idx');

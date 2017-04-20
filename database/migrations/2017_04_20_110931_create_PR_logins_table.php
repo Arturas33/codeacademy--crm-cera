@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePRLoginNameTable extends Migration {
+class CreatePRLoginsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,17 @@ class CreatePRLoginNameTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('PR_login_name', function(Blueprint $table)
+		Schema::create('PR_logins', function(Blueprint $table)
 		{
 			$table->integer('count', true);
 			$table->string('id', 36)->unique('id');
-			$table->timestamp('crated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->softDeletes();
-			$table->string('name')->nullable();
-			$table->string('description', 45)->nullable();
+			$table->string('user')->nullable();
+			$table->string('password')->nullable();
+			$table->string('login_url')->nullable();
+			$table->string('login_name_id', 36)->index('fk_PR_logins_PR_login_name1_idx');
 		});
 	}
 
@@ -32,7 +34,7 @@ class CreatePRLoginNameTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('PR_login_name');
+		Schema::drop('PR_logins');
 	}
 
 }

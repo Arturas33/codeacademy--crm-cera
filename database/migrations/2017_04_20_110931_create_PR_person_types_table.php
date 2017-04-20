@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePRProjetTypesTable extends Migration {
+class CreatePRPersonTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,15 @@ class CreatePRProjetTypesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('PR_projet_types', function(Blueprint $table)
+		Schema::create('PR_person_types', function(Blueprint $table)
 		{
 			$table->integer('count', true);
 			$table->string('id', 36)->unique('id_UNIQUE');
-			$table->timestamp('crated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->softDeletes();
-			$table->string('name');
-			$table->string('discription');
+			$table->string('name')->nullable();
+			$table->text('description', 65535)->nullable();
 		});
 	}
 
@@ -32,7 +32,7 @@ class CreatePRProjetTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('PR_projet_types');
+		Schema::drop('PR_person_types');
 	}
 
 }

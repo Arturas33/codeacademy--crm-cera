@@ -14,6 +14,7 @@ class AddForeignKeysToPRProjectTable extends Migration {
 	{
 		Schema::table('PR_project', function(Blueprint $table)
 		{
+			$table->foreign('clients_id', 'fk_PR_project_PR_clients1')->references('id')->on('PR_clients')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('types_id', 'fk_PR_project_PR_projet_types1')->references('id')->on('PR_projet_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
@@ -28,6 +29,7 @@ class AddForeignKeysToPRProjectTable extends Migration {
 	{
 		Schema::table('PR_project', function(Blueprint $table)
 		{
+			$table->dropForeign('fk_PR_project_PR_clients1');
 			$table->dropForeign('fk_PR_project_PR_projet_types1');
 		});
 	}
