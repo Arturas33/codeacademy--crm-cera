@@ -13,10 +13,14 @@ class PRPersonsController extends Controller {
 	 */
 	public function index()
 	{
+        return PRpersons::orderBy('created_at','desc')
+                            ->where('count', '>', 5 )
+                            ->select('id', 'name', 'mail', 'phone')
+                            ->first();
 
 
-		 return PRpersons::paginate(3);
-	}
+
+    }
 
 	/**
 	 * Show the form for creating a new resource.
