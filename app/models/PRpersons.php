@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: CodeAcademy
- * Date: 2017.04.20
- * Time: 14:19
+ * Date: 2017.04.21
+ * Time: 09:23
  */
 
 namespace App\models;
@@ -11,9 +11,7 @@ namespace App\models;
 
 
 
-
-
-class PRclients extends CoreModel
+class PRpersons extends CoreModel
 {
 
 
@@ -23,13 +21,13 @@ class PRclients extends CoreModel
      * @var string
      */
 
-    protected $table = 'PR_poject_login_connections';
+    protected $table = 'PR_persons';
 
     /**
      * Fields which will be manipulated
      * @var array
      */
-    protected $fillable = ['id', 'name', 'type'];
+    protected $fillable = ['id', 'name', 'mail', 'phone', 'project_id'];
 
 
 }
