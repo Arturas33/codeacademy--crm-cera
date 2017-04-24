@@ -27,6 +27,6 @@ class PRprojectConnections extends CoreModel
      * Fields which will be manipulated
      * @var array
      */
-    protected $fillable = ['id', 'project_id', 'perso_type_id'];
+    protected $fillable = ['id', 'project_id', 'perso_type_id', 'person_id'];
 
 }

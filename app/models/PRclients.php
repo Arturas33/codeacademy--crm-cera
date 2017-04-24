@@ -23,7 +23,7 @@ class PRclients extends CoreModel
      * @var string
      */
 
-    protected $table = 'PR_poject_login_connections';
+    protected $table = 'PR_clients';
 
     /**
      * Fields which will be manipulated
