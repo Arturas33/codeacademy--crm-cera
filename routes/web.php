@@ -83,6 +83,9 @@ Route::get('/generate-fake-data/PC/{count?}',[
     'uses'=>'PRFakeDataController@generateProjectConnections'
 ]);
 
-
+Route::get('/',function ()
+{
+    return view('welcome');
+});
 
 

@@ -21,7 +21,7 @@ use App\models\PRclientPersonConected;
          */
         public function index()
         {
-            return PRclientPersonConected:: get();
+            return PRclientPersonConected::with(['person'])->get();
 
         }
 

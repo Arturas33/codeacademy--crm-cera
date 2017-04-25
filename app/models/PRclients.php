@@ -9,10 +9,6 @@
 namespace App\models;
 
 
-
-
-
-
 class PRclients extends CoreModel
 {
 
@@ -30,6 +26,21 @@ class PRclients extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'name', 'type'];
+
+    protected $appends = ['is_company' ];
+
+    public function project()
+    {
+        return $this->hasMany(PRproject::class, 'clients_id', 'id');
+    }
+    public  function persons()
+    {
+        return $this->hasMany(PRclientPersonConected::class, 'cllients_id', 'id')->with(['personData']);
+    }
+    protected function getIsCompanyAttribute()
+    {
+        return $this->type == 'J';
+    }
 
 
 }

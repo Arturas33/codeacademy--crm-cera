@@ -22,8 +22,18 @@ class PRclientsController extends Controller {
      */
     public function index()
     {
-        return PRclients:: get();
+        return PRclients::with( ['project', 'persons'])->get();
+        /**
+         PRclients:: all();
 
+         $configuration = [
+             'example' => 'Example Data',
+             'client'=> PRclients::with(['project'])->get(),
+
+         ];
+
+         return view('data', $configuration);
+ */
     }
 
     /**

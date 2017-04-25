@@ -8,13 +8,8 @@
 
 namespace App\models;
 
-
-
-
 class PRpersons extends CoreModel
 {
-
-
     /**
      * Table name
      *

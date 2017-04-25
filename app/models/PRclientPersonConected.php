@@ -29,5 +29,10 @@ class PRclientPersonConected extends CoreModel
      */
     protected $fillable = ['id', 'cllients_id', 'person_id', 'client_person_type_id'];
 
+    public function personData()
+    {
+        return $this->hasOne(PRpersons::class, 'id' , 'person_id');
+    }
+
 
 }
