@@ -29,4 +29,19 @@ class PRprojectConnections extends CoreModel
      */
     protected $fillable = ['id', 'project_id', 'perso_type_id', 'person_id'];
 
+    public function person()
+    {
+        return $this->hasOne(PRpersons::class, 'id' , 'person_id');
+    }
+    public function project()
+    {
+        return $this->hasMany(PRproject::class, 'id' , 'project_id');
+    }
+
+    public function personType()
+    {
+        return $this->hasOne(PRpersonTypes::class, 'id' , 'perso_type_id');
+    }
+
+
 }

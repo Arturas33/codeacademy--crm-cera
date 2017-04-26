@@ -46,11 +46,11 @@ Route::get('/Ptypes',[
 Route::get('/generate-fake-data/Ptyprs/{count?}',[
     'uses'=>'PRFakeDataController@generateProjetTypes'
 ]);
-Route::get('/Project',[
+Route::get('/project',[
     'uses'=>'PRProjectController@index'
 ]);
 
-Route::get('/generate-fake-data/Project/{count?}',[
+Route::get('/generate-fake-data/project/{count?}',[
     'uses'=>'PRFakeDataController@generateProject'
 ]);
 
@@ -85,7 +85,9 @@ Route::get('/generate-fake-data/PC/{count?}',[
 
 Route::get('/',function ()
 {
-    return view('welcome');
+    return view('main');
 });
+
+
 
 

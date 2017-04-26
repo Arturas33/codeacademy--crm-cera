@@ -29,4 +29,6 @@ class PRprojetTypes extends CoreModel
     protected $fillable = ['id', 'name', 'discription'];
 
 
+
+
 }
