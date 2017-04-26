@@ -12,7 +12,8 @@ namespace App\Http\Controllers;
 use App\models\PRclients;
 use Illuminate\Routing\Controller;
 
-class PRclientsController extends Controller {
+class PRclientsController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -22,18 +23,30 @@ class PRclientsController extends Controller {
      */
     public function index()
     {
-        return PRclients::with( ['project', 'persons'])->get();
+
+
+        $configuration = [];
+
+        $configuration['clients'] = PRclients::with(['project'])->get();
+        $configuration['totalCount'] = sizeof($configuration['clients']);
+
+
+        return view('content.clients', $configuration);
+
         /**
-         PRclients:: all();
+         *
+         *  return PRclients::with( ['project', 'persons'])->get();
+         *
+         * PRclients:: all();
 
-         $configuration = [
-             'example' => 'Example Data',
-             'client'=> PRclients::with(['project'])->get(),
-
-         ];
-
-         return view('data', $configuration);
- */
+         * $configuration = [
+         * 'example' => 'Example Data',
+         * 'client'=> PRclients::with(['project'])->get(),
+         *
+         * ];
+         *
+         * return view('data', $configuration);
+         */
     }
 
     /**
@@ -62,7 +75,7 @@ class PRclientsController extends Controller {
      * Display the specified resource.
      * GET /prpersons/{id}
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -74,7 +87,7 @@ class PRclientsController extends Controller {
      * Show the form for editing the specified resource.
      * GET /prpersons/{id}/edit
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -86,7 +99,7 @@ class PRclientsController extends Controller {
      * Update the specified resource in storage.
      * PUT /prpersons/{id}
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
@@ -98,7 +111,7 @@ class PRclientsController extends Controller {
      * Remove the specified resource from storage.
      * DELETE /prpersons/{id}
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)

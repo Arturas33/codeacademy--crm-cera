@@ -11,7 +11,8 @@ namespace App\Http\Controllers;
 
 use App\models\PRproject;
 
-class PRProjectController extends Controller {
+class PRProjectController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -21,7 +22,23 @@ class PRProjectController extends Controller {
      */
     public function index()
     {
-        return PRproject:: get();
+        $configuration = [];
+
+
+        $configuration['projects'] = PRproject::with(['connection', 'client'])->get()->toArray();
+        $configuration['totalCount'] = sizeof($configuration['projects']);
+
+         return view('content.project', $configuration );
+
+
+        // $configuration = [];
+
+        //$configuration['projects'] = PRproject::with(['client'])->get();
+        //$configuration['totalCount'] = sizeof($configuration['projects']);
+
+        // return view('content.project', $configuration );
+
+        // return PRproject:: get();
 
     }
 
@@ -51,7 +68,7 @@ class PRProjectController extends Controller {
      * Display the specified resource.
      * GET /prpersons/{id}
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -63,7 +80,7 @@ class PRProjectController extends Controller {
      * Show the form for editing the specified resource.
      * GET /prpersons/{id}/edit
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -75,7 +92,7 @@ class PRProjectController extends Controller {
      * Update the specified resource in storage.
      * PUT /prpersons/{id}
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
@@ -87,7 +104,7 @@ class PRProjectController extends Controller {
      * Remove the specified resource from storage.
      * DELETE /prpersons/{id}
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
